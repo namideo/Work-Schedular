@@ -102,7 +102,18 @@ if (currentHour < hour17) {
 
 
   
-$(".saveBtn").addEventListener("click", function() {
-  var Content = localStorage.setItem("Content", Content);
-  document.getElementById("textcontent").innerHTML = localStorage.getItem("Content");
+$(".saveBtn").on("click", function(event) { console.log(event.currentTarget.id.split('-')[1]);
+
+    var textId = event.currentTarget.id.split('-')[1];
+    // console.log($(`#${textId}`));
+
+// Get value from html element
+
+var textVal = $(`#${textId}`)[0].value;
+    console.log(textVal);
+  localStorage.setItem(textId, textVal);
+
+  $('#9').innerHTML = localStorage.getItem(textId);
+  console.log("content");
+
 });
